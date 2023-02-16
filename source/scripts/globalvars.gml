@@ -1,0 +1,15 @@
+globalvar
+    WIDTH,HEIGHT,
+    MOUSE_X,MOUSE_Y,
+
+    GAMEMAKER,
+
+    EXTDIR,
+
+    RECLIST,FUNCLIST,EXTLIST,
+
+    CURREC,CUREXT,CURFUNC,
+
+    TAB,
+
+    HELPSEARCH,

@@ -1,0 +1,95 @@
+var width,width2;
+width=0
+width2=0
+
+rect(0,0,WIDTH,32,global.col_main,1)
+
+if (TAB==tab_recent) {
+    i=0 repeat (ds_list_size(RECLIST)) {
+        width=max(width,string_width(dsmap(dslist(RECLIST,i),"name")))
+    i+=1}
+    width+=16+16+4
+
+    draw_button_ext(0,32,width,HEIGHT-32,0,global.col_main)
+
+    i=0 repeat (ds_list_size(RECLIST)) {
+        dy=36+24*i
+        if (clickrect(4,dy,width-8,24)) {
+            CURREC=i
+        }
+        if (CURREC==i) rect(4,dy,width-8,24,global.col_high,1)
+        rec=dslist(RECLIST,i)
+        texture_set_interpolation(1)
+        if (dsmap(rec,"type")) draw_sprite_stretched(dsmap(rec,"icon"),0,8,dy+4,16,16)
+        else draw_sprite_stretched(sprGMK,0,8,dy+4,16,16)
+        texture_set_interpolation(0)
+        draw_text(28,dy+2,dsmap(rec,"name"))
+        draw_line_color(4,dy+24,width-4,dy+24,global.col_high,global.col_high)
+    i+=1}
+
+    if (CURREC!=noone) {
+        width2=WIDTH-width
+        rect(width,32,WIDTH-width,32,global.col_main,1)
+        draw_line_color(width,32,WIDTH,32,global.col_high,global.col_high)
+        draw_button_ext(width,64,WIDTH-width,HEIGHT-64,0,global.col_main)
+        dx=width+8
+        dy=36
+
+        rec=dslist(RECLIST,CURREC)
+
+        type=dsmap(rec,"type")
+
+        if (type) {
+            texture_set_interpolation(1)
+            draw_sprite_stretched(dsmap(rec,"icon"),0,dx,dy+38,32,32)
+            texture_set_interpolation(0)
+            draw_text(dx+38,dy+36,dsmap(rec,"path")+"#"+dsmap(rec,"pname")+"#"+date_datetime_string(dsmap(rec,"timestamp")))
+        } else {
+            draw_sprite(sprGMK,0,dx,dy+38)
+            draw_text(dx+38,dy+36,dsmap(rec,"path")+"#"+string(dsmap(rec,"size")/1024)+"KB"+"#"+date_datetime_string(dsmap(rec,"timestamp")))
+        }
+    } else draw_button_ext(width,32,WIDTH-width,HEIGHT-32,0,noone)
+}
+
+if (TAB==tab_help) {
+    i=0 repeat (ds_list_size(EXTLIST)) {
+        width=max(width,string_width(dslist(EXTLIST,i)))
+    i+=1}
+    width+=16
+
+    draw_button_ext(0,32,width,HEIGHT-32,0,global.col_main)
+
+    i=0 repeat (ds_list_size(EXTLIST)) {
+        dy=36+24*i
+        if (clickrect(4,dy,width-8,24)) {
+            CUREXT=i load_compiled_extension(dslist(EXTLIST,i))
+        }
+        if (CUREXT==i) rect(4,dy,width-8,24,global.col_high,1)
+        draw_text(8,dy+2,dslist(EXTLIST,i))
+        draw_line_color(4,dy+24,width-4,dy+24,global.col_high,global.col_high)
+    i+=1}
+
+    if (CUREXT!=noone) {
+        i=0 repeat (ds_list_size(FUNCLIST)) {
+            width2=max(width2,string_width(dsmap(dslist(FUNCLIST,i),"name")))
+        i+=1}
+        width2+=16
+
+        draw_button_ext(width,32,width2,HEIGHT-32,0,global.col_main)
+
+        i=0 repeat (ds_list_size(FUNCLIST)) {
+            dy=36+24*i
+            map=dslist(FUNCLIST,i)
+            draw_text(width+8,dy+2,dsmap(map,"name"))
+        i+=1}
+    }
+
+    draw_button_ext(width+width2,32,WIDTH-width-width2,HEIGHT-32,0,noone)
+}
+
+with (Button) {
+    if (anchor&anc_width1) x=width+xstart
+    if (anchor&anc_width2) w=width2
+    if (visibility==vis_open && width2==0) x=-999
+    if (mytab==TAB || mytab==-1) button_draw()
+}
