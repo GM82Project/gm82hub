@@ -5,13 +5,6 @@ action_id=603
 applies_to=self
 */
 create()
-#define Step_0
-/*"/*'/**//* YYD ACTION
-lib_id=1
-action_id=603
-applies_to=self
-*/
-stepui()
 #define Other_30
 /*"/*'/**//* YYD ACTION
 lib_id=1

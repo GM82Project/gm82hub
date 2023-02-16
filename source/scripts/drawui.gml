@@ -2,6 +2,9 @@ var width,width2;
 width=0
 width2=0
 
+MOUSE_X=window_mouse_get_x()
+MOUSE_Y=window_mouse_get_y()
+
 rect(0,0,WIDTH,32,global.col_main,1)
 
 if (TAB==tab_recent) {
@@ -91,5 +94,10 @@ with (Button) {
     if (anchor&anc_width1) x=width+xstart
     if (anchor&anc_width2) w=width2
     if (visibility==vis_open && width2==0) x=-999
+
+    if (mouse_check_button_pressed(mb_left)) if (instance_position(MOUSE_X,MOUSE_Y,id)) {
+        event_user(2)
+    }
+
     if (mytab==TAB || mytab==-1) button_draw()
 }

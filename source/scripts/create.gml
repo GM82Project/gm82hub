@@ -16,7 +16,6 @@ theme_init()
 
 createui()
 
-background_x[0]=320
 background_y[0]=32
 
 load_recent()
