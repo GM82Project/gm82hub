@@ -180,8 +180,11 @@ load_compiled_extension
 textfield_activate
 textfield_actions
 parse_johnny
-undo_extension_dat_encryption
+gex_generate_table
 load_extensions
 clickrect
 load_recent
 run_game
+gex_decrypt_part
+
+update_window

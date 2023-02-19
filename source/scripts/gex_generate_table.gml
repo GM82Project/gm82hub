@@ -1,7 +1,9 @@
-///undo_extension_dat_encryption(buffer)
-var b,seed,sa,sb,table,revtable,i,j,tmp;
+///gex_generate_table(buffer)
+var b,seed,sa,sb,table,i,j,tmp;
 
 b=argument0
+
+globalvar GEXTABLE;
 
 seed=buffer_read_u32(b)
 
@@ -11,7 +13,7 @@ seed=buffer_read_u32(b)
 
     for (i=0;i<256;i+=1) {
         table[i]=i
-        revtable[i]=i
+        GEXTABLE[i]=i
     }
 
     for (i=1;i<10001;i+=1) {
@@ -22,14 +24,5 @@ seed=buffer_read_u32(b)
     }
 
     for (i=1;i<256;i+=1) {
-        revtable[table[i]] = i
-    }
-
-//decrypt
-    for (i=5;i<buffer_get_size(b);i+=1) {
-        //swap & table
-        buffer_set_pos(b,i)
-        tmp=buffer_read_u8(b)
-        buffer_set_pos(b,i)
-        buffer_write_u8(b,revtable[tmp])
+        GEXTABLE[table[i]] = i
     }

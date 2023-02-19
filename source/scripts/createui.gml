@@ -5,13 +5,13 @@ i.text="Recent"
 
 i=instance_create(96,0,Button)
 i.w=96
-i.action="newstab"
-i.text="News"
+i.action="docstab"
+i.text="Docs"
 
 i=instance_create(192,0,Button)
 i.w=96
-i.action="docstab"
-i.text="Docs"
+i.action="newstab"
+i.text="News"
 
 i=instance_create(288,0,Button)
 i.w=96
@@ -45,8 +45,8 @@ i.visibility=vis_open
 
 
 //help tab
-i=instance_create(0,32,TextField)
-i.w=320
+i=instance_create(4,36,TextField)
+i.w=320-8
 i.action="search"
 i.dtext="Search..."
 i.mytab=tab_help

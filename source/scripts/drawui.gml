@@ -65,7 +65,8 @@ if (TAB==tab_help) {
     i=0 repeat (ds_list_size(EXTLIST)) {
         dy=36+24*i
         if (clickrect(4,dy,width-8,24)) {
-            CUREXT=i load_compiled_extension(dslist(EXTLIST,i))
+            if (CUREXT!=i) load_compiled_extension(dslist(EXTLIST,i))
+            CUREXT=i
         }
         if (CUREXT==i) rect(4,dy,width-8,24,global.col_high,1)
         draw_text(8,dy+2,dslist(EXTLIST,i))
@@ -81,18 +82,37 @@ if (TAB==tab_help) {
         draw_button_ext(width,32,width2,HEIGHT-32,0,global.col_main)
 
         i=0 repeat (ds_list_size(FUNCLIST)) {
-            dy=36+24*i
+            dy=44+24*i
             map=dslist(FUNCLIST,i)
+            if (clickrect(width+4,dy,width2-8,24)) {
+                CURFUNC=i
+            }
+            if (CURFUNC==i) rect(width+4,dy,width2-8,24,global.col_high,1)
+
             draw_text(width+8,dy+2,dsmap(map,"name"))
         i+=1}
     }
 
-    draw_button_ext(width+width2,32,WIDTH-width-width2,HEIGHT-32,0,noone)
+    if (CURFUNC!=noone) {
+        draw_button_ext(width+width2,32,WIDTH-width-width2,HEIGHT-32,0,global.col_main)
+        map=dslist(FUNCLIST,CURFUNC)
+
+        dx=width+width2+8
+        dy=38
+
+        draw_set_font(fntLarge)
+        draw_text(dx,dy,dsmap(map,"name"))
+        draw_set_font(fntCode)
+        args=dsmap(map,"args")
+        if (args="") draw_text(dx,dy+40,"no arguments")
+        else draw_text(dx,dy+40,args)
+        draw_text_ext(dx,dy+80,dsmap(map,"desc"),-1,WIDTH-width-width2-16)
+    } else draw_button_ext(width+width2,32,WIDTH-width-width2,HEIGHT-32,0,noone)
 }
 
 with (Button) {
     if (anchor&anc_width1) x=width+xstart
-    if (anchor&anc_width2) w=width2
+    if (anchor&anc_width2) w=width2-8
     if (visibility==vis_open && width2==0) x=-999
 
     if (mouse_check_button_pressed(mb_left)) if (instance_position(MOUSE_X,MOUSE_Y,id)) {

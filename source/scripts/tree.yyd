@@ -11,7 +11,8 @@
 	|load_recent
 	|load_extensions
 	+subroutines
-		|undo_extension_dat_encryption
+		|gex_generate_table
+		|gex_decrypt_part
 		|load_compiled_extension
 		|parse_johnny
 +ui
@@ -22,6 +23,7 @@
 	|textfield_actions
 	+actions
 		|run_game
+	|update_window
 |globalvars
 |create
 |createui
