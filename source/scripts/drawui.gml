@@ -65,7 +65,7 @@ if (TAB==tab_help) {
     i=0 repeat (ds_list_size(EXTLIST)) {
         dy=36+24*i
         if (clickrect(4,dy,width-8,24)) {
-            if (CUREXT!=i) load_compiled_extension(dslist(EXTLIST,i))
+            if (CUREXT!=i) load_builtin_help(dslist(EXTLIST,i))
             CUREXT=i
         }
         if (CUREXT==i) rect(4,dy,width-8,24,global.col_high,1)

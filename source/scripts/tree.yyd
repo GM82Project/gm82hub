@@ -14,7 +14,9 @@
 		|gex_generate_table
 		|gex_decrypt_part
 		|load_compiled_extension
+		|load_builtin_help
 		|parse_johnny
+		|clear_func_list
 +ui
 	|button_actions
 	|button_held

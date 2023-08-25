@@ -188,3 +188,5 @@ run_game
 gex_decrypt_part
 
 update_window
+load_builtin_help
+clear_func_list

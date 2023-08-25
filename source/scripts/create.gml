@@ -1,5 +1,7 @@
 globalvars()
 
+if (!directory_exists(working_directory+"\help")) set_working_directory(directory_previous(working_directory))
+
 TAB=tab_recent
 WIDTH=room_width
 HEIGHT=room_height
