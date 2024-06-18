@@ -1,6 +1,7 @@
 +util
 	|rect
 	|clickrect
+	|timestamp_nicer
 +theming
 	|theme_init
 	|theme_apply
@@ -23,9 +24,11 @@
 	|button_draw
 	|textfield_activate
 	|textfield_actions
-	+actions
-		|run_game
 	|update_window
++actions
+	|edit_game
+	|run_game
+	|compile_game
 |globalvars
 |create
 |createui

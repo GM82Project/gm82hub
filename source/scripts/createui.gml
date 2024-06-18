@@ -3,7 +3,7 @@ i.w=96
 i.action="lasttab"
 i.text="Recent"
 
-i=instance_create(96,0,Button)
+/*i=instance_create(96,0,Button)
 i.w=96
 i.action="docstab"
 i.text="Docs"
@@ -16,7 +16,7 @@ i.text="News"
 i=instance_create(288,0,Button)
 i.w=96
 i.action="updatestab"
-i.text="Updates"
+i.text="Updates"      */
 
 //recent tab
 i=instance_create(0,32,Button)
@@ -30,7 +30,7 @@ i.visibility=vis_open
 i=instance_create(64,32,Button)
 i.w=64
 i.action="rungmk"
-i.text="Run"
+i.text="Test"
 i.mytab=tab_recent
 i.anchor=anc_width1
 i.visibility=vis_open

@@ -1,3 +1,5 @@
+ds_list_clear(RECLIST)
+
 i=0 repeat (8) {
     name=registry_read_string_ext("SOFTWARE\Game Maker\Version 8.2\Preferences","Recent"+string(i))
     if (name!="") if (file_exists(name)) {
