@@ -27,6 +27,7 @@
 	|update_window
 +actions
 	|edit_game
+	|browse_game
 	|run_game
 	|compile_game
 |globalvars

@@ -43,6 +43,13 @@ i.mytab=tab_recent
 i.anchor=anc_width1
 i.visibility=vis_open
 
+i=instance_create(192,32,Button)
+i.w=144
+i.action="browsegmk"
+i.text="Browse files"
+i.mytab=tab_recent
+i.anchor=anc_width1
+i.visibility=vis_open
 
 //help tab
 i=instance_create(4,36,TextField)

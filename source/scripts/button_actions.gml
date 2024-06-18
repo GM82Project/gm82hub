@@ -13,4 +13,8 @@ switch (action) {
     case "compilegmk": {
         compile_game()
     } break
+    case "browsegmk": {
+        browse_game()
+    } break
+
 }
