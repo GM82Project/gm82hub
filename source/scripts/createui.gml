@@ -3,11 +3,11 @@ i.w=96
 i.action="lasttab"
 i.text="Recent"
 
-/*i=instance_create(96,0,Button)
+i=instance_create(96,0,Button)
 i.w=96
 i.action="docstab"
 i.text="Docs"
-
+/*
 i=instance_create(192,0,Button)
 i.w=96
 i.action="newstab"
