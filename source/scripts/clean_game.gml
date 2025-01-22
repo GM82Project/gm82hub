@@ -37,6 +37,8 @@ if (file_exists(fn)) {
     file_delete(fn)
 }
 
+cleanup_loadingbar(1)
+
 if (has_backgrounds) {
     backgrounds=load_index("backgrounds")
     for (f=file_find_first(root+"backgrounds\*.*",0);f!="";f=file_find_next()) {
@@ -63,7 +65,7 @@ if (has_backgrounds) {
     delete_directory(root+"cache\backgrounds")
 }
 
-cleanup_loadingbar(0.1)
+cleanup_loadingbar(2)
 
 if (has_datafiles) {
     datafiles=load_index("datafiles")
@@ -85,7 +87,7 @@ if (has_datafiles) {
     delete_directory(root+"datafiles")
 }
 
-cleanup_loadingbar(0.2)
+cleanup_loadingbar(3)
 
 if (has_fonts) {
     fonts=load_index("fonts")
@@ -103,7 +105,7 @@ if (has_fonts) {
     delete_directory(root+"fonts")
 }
 
-cleanup_loadingbar(0.3)
+cleanup_loadingbar(4)
 
 if (has_objects) {
     objects=load_index("objects")
@@ -121,7 +123,7 @@ if (has_objects) {
     delete_directory(root+"objects")
 }
 
-cleanup_loadingbar(0.4)
+cleanup_loadingbar(5)
 
 if (has_paths) {
     paths=load_index("paths")
@@ -141,7 +143,7 @@ if (has_paths) {
     delete_directory(root+"paths")
 }
 
-cleanup_loadingbar(0.5)
+cleanup_loadingbar(6)
 
 if (has_scripts) {
     scripts=load_index("scripts")
@@ -159,7 +161,7 @@ if (has_scripts) {
     delete_directory(root+"scripts")
 }
 
-cleanup_loadingbar(0.6)
+cleanup_loadingbar(7)
 
 if (has_sounds) {
     sounds=load_index("sounds")
@@ -177,7 +179,7 @@ if (has_sounds) {
     delete_directory(root+"sounds")
 }
 
-cleanup_loadingbar(0.7)
+cleanup_loadingbar(8)
 
 if (has_sprites) {
     sprites=load_index("sprites")
@@ -190,6 +192,7 @@ if (has_sprites) {
         } else {
             f=file_text_open_read(spr+"\sprite.txt")
             frames=real(string_digits(file_text_read_string(f)))
+            file_text_close(f)
             j=frames while file_exists(spr+"\"+string(j)+".png") j+=1
             repeat (j-frames) {
                 j-=1
@@ -198,7 +201,6 @@ if (has_sprites) {
                 saved+=file_size(fn)
                 file_delete(fn)
             }
-            file_text_close(f)
         }
     }file_find_close()
     repeat (i) {
@@ -220,7 +222,7 @@ if (has_sprites) {
     delete_directory(root+"cache\sprites")
 }
 
-cleanup_loadingbar(0.8)
+cleanup_loadingbar(9)
 
 if (has_timelines) {
     timelines=load_index("timelines")
@@ -238,7 +240,7 @@ if (has_timelines) {
     delete_directory(root+"timelines")
 }
 
-cleanup_loadingbar(0.9)
+cleanup_loadingbar(10)
 
 if (has_triggers) {
     triggers=load_index("triggers")
@@ -256,8 +258,33 @@ if (has_triggers) {
     delete_directory(root+"triggers")
 }
 
-cleanup_loadingbar(1)
+cleanup_loadingbar(11)
 
+//rooms
+rooms=load_index("rooms")
+i=0
+for (f=file_find_first(root+"rooms\*",fa_directory);f!="";f=file_find_next()) {
+    if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
+    rom=root+"rooms\"+f
+    if (ds_list_find_index(rooms,f)==-1) {
+        delete[i]=spr i+=1
+    } else {
+        //f=file_text_open_read(rom+"\instances.txt")
+        //todo: clean up leftover creation code files
+
+        //todo: remove gm82room lockfile
+        //todo: remove gm82room /autosave/ dir
+    }
+    //todo: remove gm82room <room>_gm82room_backup dirs
+}file_find_close()
+repeat (i) {
+    i-=1
+    delete_directory(delete[i])
+}
+ds_list_destroy(rooms)
+
+
+//count and finish
 if (files==0 && folders=0) {
     cleanupstr="No cleanup was performed at this moment."
 } else {
