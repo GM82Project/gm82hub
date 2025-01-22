@@ -8,6 +8,8 @@ switch (action) {
 }
 
 if (object_index==Button) {
+    if (gray) up=0
+
     draw_button_ext(x,y,w,h,up,color)
 
     if (text!="") {

@@ -26,7 +26,7 @@ i=0 repeat (8) {
 i+=1}
 
 if (ds_list_size(RECLIST)) {
-    CURREC=0
+    change_currec(0)
     i=0 repeat (min(8,ds_list_size(RECLIST))) {
         registry_write_string_ext("SOFTWARE\Game Maker\Version 8.2\Preferences","Recent"+string(i),dsmap(dslist(RECLIST,i),"path"))
     i+=1}

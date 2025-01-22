@@ -51,6 +51,15 @@ i.mytab=tab_recent
 i.anchor=anc_width1
 i.visibility=vis_open
 
+i=instance_create(336,32,Button)
+i.w=144
+i.action="cleangmk"
+i.text="Clean project"
+i.mytab=tab_recent
+i.anchor=anc_width1
+i.visibility=vis_open
+
+
 //help tab
 i=instance_create(4,36,TextField)
 i.w=320-8

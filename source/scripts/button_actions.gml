@@ -16,5 +16,8 @@ switch (action) {
     case "browsegmk": {
         browse_game()
     } break
+    case "cleangmk": {
+        clean_game()
+    } break
 
 }

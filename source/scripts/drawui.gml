@@ -18,7 +18,7 @@ if (TAB==tab_recent) {
     i=0 repeat (ds_list_size(RECLIST)) {
         dy=36+24*i
         if (clickrect(4,dy,width-8,24)) {
-            CURREC=i
+            change_currec(i)
         }
         if (CURREC==i) rect(4,dy,width-8,24,global.col_high,1)
         rec=dslist(RECLIST,i)

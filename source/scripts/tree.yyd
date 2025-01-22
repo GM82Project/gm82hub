@@ -2,6 +2,9 @@
 	|rect
 	|clickrect
 	|timestamp_nicer
+	|load_index
+	|delete_directory
+	|cleanup_loadingbar
 +theming
 	|theme_init
 	|theme_apply
@@ -25,11 +28,13 @@
 	|textfield_activate
 	|textfield_actions
 	|update_window
+	|change_currec
 +actions
 	|edit_game
 	|browse_game
 	|run_game
 	|compile_game
+	|clean_game
 |globalvars
 |create
 |createui

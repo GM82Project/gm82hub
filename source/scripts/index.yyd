@@ -194,3 +194,8 @@ timestamp_nicer
 compile_game
 edit_game
 browse_game
+clean_game
+load_index
+delete_directory
+change_currec
+cleanup_loadingbar
