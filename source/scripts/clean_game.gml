@@ -26,15 +26,14 @@ has_sprites=real(dsmap(map,"has_sprites"))
 has_timelines=real(dsmap(map,"has_timelines"))
 has_triggers=real(dsmap(map,"has_triggers"))
 
+delete_log=""
 files=0
 saved=0
 folders=0
 
 fn=root+"game_errors.log"
 if (file_exists(fn)) {
-    files+=1
-    saved+=file_size(fn)
-    file_delete(fn)
+    delete_file(fn)
 }
 
 cleanup_loadingbar(1)
@@ -44,19 +43,13 @@ if (has_backgrounds) {
     for (f=file_find_first(root+"backgrounds\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
         if (ds_list_find_index(backgrounds,filename_change_ext(f,""))==-1) {
-            fn=root+"backgrounds\"+f
-            files+=1
-            saved+=file_size(fn)
-            file_delete(fn)
+            delete_file(root+"backgrounds\"+f)
         }
     }file_find_close()
     for (f=file_find_first(root+"cache\backgrounds\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f=="..") continue
         if (ds_list_find_index(backgrounds,filename_change_ext(f,""))==-1) {
-            fn=root+"cache\backgrounds\"+f
-            files+=1
-            saved+=file_size(fn)
-            file_delete(fn)
+            delete_file(root+"cache\backgrounds\"+f)
         }
     }file_find_close()
     ds_list_destroy(backgrounds)
@@ -72,14 +65,8 @@ if (has_datafiles) {
     for (f=file_find_first(root+"datafiles\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd" || f=="include") continue
         if (ds_list_find_index(datafiles,filename_change_ext(f,""))==-1) {
-            fn=root+"datafiles\"+f
-            files+=1
-            saved+=file_size(fn)
-            file_delete(fn)
-            fn=root+"datafiles\include\"+string_copy(f,1,string_length(f)-3)
-            files+=1
-            saved+=file_size(fn)
-            file_delete(fn)
+            delete_file(root+"datafiles\"+f)
+            delete_file(root+"datafiles\include\"+string_copy(f,1,string_length(f)-3))
         }
     }file_find_close()
     ds_list_destroy(datafiles)
@@ -94,10 +81,7 @@ if (has_fonts) {
     for (f=file_find_first(root+"fonts\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
         if (ds_list_find_index(fonts,filename_change_ext(f,""))==-1) {
-            fn=root+"fonts\"+f
-            files+=1
-            saved+=file_size(fn)
-            file_delete(fn)
+            delete_file(root+"fonts\"+f)
         }
     }file_find_close()
     ds_list_destroy(fonts)
@@ -112,10 +96,7 @@ if (has_objects) {
     for (f=file_find_first(root+"objects\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
         if (ds_list_find_index(objects,filename_change_ext(f,""))==-1) {
-            fn=root+"objects\"+f
-            files+=1
-            saved+=file_size(fn)
-            file_delete(fn)
+            delete_file(root+"objects\"+f)
         }
     }file_find_close()
     ds_list_destroy(objects)
@@ -150,10 +131,7 @@ if (has_scripts) {
     for (f=file_find_first(root+"scripts\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
         if (ds_list_find_index(scripts,filename_change_ext(f,""))==-1) {
-            fn=root+"scripts\"+f
-            files+=1
-            saved+=file_size(fn)
-            file_delete(fn)
+            delete_file(root+"scripts\"+f)
         }
     }file_find_close()
     ds_list_destroy(scripts)
@@ -168,10 +146,7 @@ if (has_sounds) {
     for (f=file_find_first(root+"sounds\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
         if (ds_list_find_index(sounds,filename_change_ext(f,""))==-1) {
-            fn=root+"sounds\"+f
-            files+=1
-            saved+=file_size(fn)
-            file_delete(fn)
+            delete_file(root+"sounds\"+f)
         }
     }file_find_close()
     ds_list_destroy(sounds)
@@ -194,12 +169,8 @@ if (has_sprites) {
             frames=real(string_digits(file_text_read_string(f)))
             file_text_close(f)
             j=frames while file_exists(spr+"\"+string(j)+".png") j+=1
-            repeat (j-frames) {
-                j-=1
-                fn=spr+"\"+string(j)+".png"
-                files+=1
-                saved+=file_size(fn)
-                file_delete(fn)
+            repeat (j-frames) {j-=1
+                delete_file(spr+"\"+string(j)+".png")
             }
         }
     }file_find_close()
@@ -210,10 +181,7 @@ if (has_sprites) {
     for (f=file_find_first(root+"cache\sprites\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f=="..") continue
         if (ds_list_find_index(sprites,filename_change_ext(f,""))==-1) {
-            fn=root+"cache\sprites\"+f
-            files+=1
-            saved+=file_size(fn)
-            file_delete(fn)
+            delete_file(root+"cache\sprites\"+f)
         }
     }file_find_close()
 
@@ -229,10 +197,7 @@ if (has_timelines) {
     for (f=file_find_first(root+"timelines\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
         if (ds_list_find_index(timelines,filename_change_ext(f,""))==-1) {
-            fn=root+"timelines\"+f
-            files+=1
-            saved+=file_size(fn)
-            file_delete(fn)
+            delete_file(root+"timelines\"+f)
         }
     }file_find_close()
     ds_list_destroy(timelines)
@@ -247,10 +212,7 @@ if (has_triggers) {
     for (f=file_find_first(root+"triggers\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd") continue
         if (ds_list_find_index(triggers,filename_change_ext(f,""))==-1) {
-            fn=root+"triggers\"+f
-            files+=1
-            saved+=file_size(fn)
-            file_delete(fn)
+            delete_file(root+"triggers\"+f)
         }
     }file_find_close()
     ds_list_destroy(triggers)
@@ -262,31 +224,45 @@ cleanup_loadingbar(11)
 
 //rooms
 rooms=load_index("rooms")
-i=0
+i=0 j=0
 for (f=file_find_first(root+"rooms\*",fa_directory);f!="";f=file_find_next()) {
     if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
     rom=root+"rooms\"+f
-    if (ds_list_find_index(rooms,f)==-1) {
-        delete[i]=spr i+=1
+    if (!directory_exists(rom)) {
+        //it's actually a stray file. in the room folder
+        delete_file(rom)
+    } else if (ds_list_find_index(rooms,f)==-1) {
+        delete[i]=rom i+=1
     } else {
-        //f=file_text_open_read(rom+"\instances.txt")
-        //todo: clean up leftover creation code files
-
-        //todo: remove gm82room lockfile
-        //todo: remove gm82room /autosave/ dir
+        check[j]=rom j+=1 
     }
-    //todo: remove gm82room <room>_gm82room_backup dirs
 }file_find_close()
 repeat (i) {
     i-=1
     delete_directory(delete[i])
 }
+repeat (j) {
+    j-=1    
+    delete_directory(check[j]+"\autosave")
+    instances=file_text_read_all(check[j]+"\instances.txt")
+    for (f=file_find_first(check[j]+"\*.gml",0);f!="";f=file_find_next()) {        
+        if (f!="code.gml") {
+            if (!string_pos(filename_change_ext(f,""),instances)) {
+                delete_file(check[j]+"\"+f)
+            }
+        }
+    }file_find_close()
+}
 ds_list_destroy(rooms)
+instances=""
 
 
 //count and finish
+screen_redraw()
+projname=dsmap(dslist(RECLIST,CURREC),"name")
+cleanupmsg='Cleanup of project "'+projname+'":##'
 if (files==0 && folders=0) {
-    cleanupstr="No cleanup was performed at this moment."
+    show_message(cleanupmsg+"No cleanup was necessary at this moment.")
 } else {
     if (saved<1024) saved=string(saved)+" bytes"
     else if (saved<1024*1024) saved=string(saved/1024)+" KB"
@@ -298,8 +274,15 @@ if (files==0 && folders=0) {
     if (folders==1) folders="1 folder"
     else folders=string(folders)+" folders"
 
-    cleanupstr="- "+folders+" removed#- "+files+" deleted#- "+saved+" saved"
+    cleanupmsg+="- "+folders+" removed#- "+files+" deleted#- "+saved+" saved"
+    
+    if (show_question(cleanupmsg+"##Would you like to see a log of the deleted files?")) {
+        fn=temp_directory+"\"+filename_valid(projname)+" - cleanup.log"
+        file_text_write_all(fn,string_replace_all(cleanupmsg,"#",chr_crlf)+chr_crlf+chr_crlf+delete_log)
+        execute_program("notepad",fn,false)
+    }
 }
 
-screen_redraw()
-show_message('Cleanup of project "'+dsmap(dslist(RECLIST,CURREC),"name")+'":##'+cleanupstr)
+dsmap(dsmap(dslist(RECLIST,CURREC),"meta"),"cleanstamp",date_current_datetime())
+
+save_recent_meta()

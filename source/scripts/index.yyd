@@ -199,3 +199,7 @@ load_index
 delete_directory
 change_currec
 cleanup_loadingbar
+filename_valid
+delete_file
+
+save_recent_meta

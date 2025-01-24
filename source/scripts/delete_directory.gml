@@ -10,6 +10,7 @@ if (directory_exists(argument0)) {
     p+=1}
     ds_list_destroy(l)
 
+    delete_log+=argument0+"\"+chr_crlf
     folders+=1
 
     execute_program_silent("cmd /C "+qt+"rmdir "+qt+argument0+qt+" /s /q"+qt)

@@ -22,6 +22,17 @@ i=0 repeat (8) {
         dsmap(map,"timestamp",file_get_timestamp(name))
 
         ds_list_add(RECLIST,map)
+
+        meta=dsmap()
+        metafn=filename_dir(name)+"\gm82hub.meta"
+        if (file_exists(metafn)) {
+            ds_map_read_ini(meta,metafn)
+            dsmap(meta,"cleanstamp",real(dsmap(meta,"cleanstamp")))
+        } else {
+            dsmap(meta,"cleanstamp",dsmap(map,"timestamp"))
+            ds_map_write_ini(meta,metafn)
+        }
+        dsmap(map,"meta",meta)
     }
 i+=1}
 

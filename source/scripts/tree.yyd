@@ -4,7 +4,9 @@
 	|timestamp_nicer
 	|load_index
 	|delete_directory
+	|delete_file
 	|cleanup_loadingbar
+	|filename_valid
 +theming
 	|theme_init
 	|theme_apply
@@ -21,6 +23,7 @@
 		|load_builtin_help
 		|parse_johnny
 		|clear_func_list
+		|save_recent_meta
 +ui
 	|button_actions
 	|button_held

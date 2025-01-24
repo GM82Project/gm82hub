@@ -46,7 +46,10 @@ if (TAB==tab_recent) {
             texture_set_interpolation(1)
             draw_sprite_stretched(dsmap(rec,"icon"),0,dx,dy+38,32,32)
             texture_set_interpolation(0)
-            draw_text(dx+38,dy+36,dsmap(rec,"path")+"#"+dsmap(rec,"pname")+"#Modified: "+timestamp_nicer(dsmap(rec,"timestamp")))
+            timestamp=timestamp_nicer(dsmap(rec,"timestamp"))
+            cleanstamp=timestamp_nicer(dsmap(dsmap(rec,"meta"),"cleanstamp"))
+            if (timestamp==cleanstamp) cleanstamp="Never"
+            draw_text(dx+38,dy+36,dsmap(rec,"path")+"#"+dsmap(rec,"pname")+"#Modified: "+timestamp+"#Last cleaned: "+cleanstamp)
         } else {
             draw_sprite(sprGMK,0,dx,dy+38)
             draw_text(dx+38,dy+36,dsmap(rec,"path")+"#Size: "+string(dsmap(rec,"size")/1024)+"KB"+"#Modified: "+timestamp_nicer(dsmap(rec,"timestamp")))
