@@ -5,18 +5,18 @@ i.text="Recent"
 
 i=instance_create(96,0,Button)
 i.w=96
-i.action="docstab"
-i.text="Docs"
-/*
+i.action="uptab"
+i.text="Updates"
+
 i=instance_create(192,0,Button)
 i.w=96
-i.action="newstab"
-i.text="News"
+i.action="settab"
+i.text="Settings"
 
 i=instance_create(288,0,Button)
 i.w=96
-i.action="updatestab"
-i.text="Updates"      */
+i.action="tooltab"
+i.text="Tools"
 
 //recent tab
 i=instance_create(0,32,Button)
@@ -57,16 +57,6 @@ i.action="cleangmk"
 i.text="Clean project"
 i.mytab=tab_recent
 i.anchor=anc_width1
-i.visibility=vis_open
-
-
-//help tab
-i=instance_create(4,36,TextField)
-i.w=320-8
-i.action="search"
-i.dtext="Search..."
-i.mytab=tab_help
-i.anchor=anc_width1+anc_width2
 i.visibility=vis_open
 
 //initialize all buttons

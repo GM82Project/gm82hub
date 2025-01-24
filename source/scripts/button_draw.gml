@@ -2,9 +2,9 @@ up=!down
 
 switch (action) {
     case "lasttab": {up=(TAB!=tab_recent) && !down} break
-    case "newstab": {up=(TAB!=tab_news) && !down} break
-    case "docstab": {up=(TAB!=tab_help) && !down} break
-    case "updatestab": {up=(TAB!=tab_updates) && !down} break
+    case "uptab": {up=(TAB!=tab_updates) && !down} break
+    case "settab": {up=(TAB!=tab_settings) && !down} break
+    case "tooltab": {up=(TAB!=tab_tools) && !down} break
 }
 
 if (object_index==Button) {

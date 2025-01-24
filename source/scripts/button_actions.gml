@@ -1,8 +1,8 @@
 switch (action) {
     case "lasttab": {TAB=tab_recent} break
-    case "newstab": {TAB=tab_news} break
-    case "docstab": {TAB=tab_help} break
-    case "updatestab": {TAB=tab_updates} break
+    case "uptab": {TAB=tab_updates} break
+    case "settab": {TAB=tab_settings} break
+    case "tooltab": {TAB=tab_tools} break
 
     case "opengmk": {
         edit_game()
