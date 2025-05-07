@@ -24,12 +24,13 @@ i=0 repeat (8) {
         ds_list_add(RECLIST,map)
 
         meta=dsmap()
-        metafn=filename_dir(name)+"\gm82hub.meta"
+        metafn=filename_dir(name)+"\cache\gm82hub.meta"
         if (file_exists(metafn)) {
             ds_map_read_ini(meta,metafn)
             dsmap(meta,"cleanstamp",real(dsmap(meta,"cleanstamp")))
         } else {
             dsmap(meta,"cleanstamp",dsmap(map,"timestamp"))
+            directory_create(filename_dir(name)+"\cache")
             ds_map_write_ini(meta,metafn)
         }
         dsmap(map,"meta",meta)
