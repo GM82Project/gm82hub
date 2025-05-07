@@ -203,3 +203,4 @@ filename_valid
 delete_file
 
 save_recent_meta
+check_tree_vs_index

@@ -40,6 +40,7 @@ cleanup_loadingbar(1)
 
 if (has_backgrounds) {
     backgrounds=load_index("backgrounds")
+    check_tree_vs_index("backgrounds",backgrounds,".txt")
     for (f=file_find_first(root+"backgrounds\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
         if (ds_list_find_index(backgrounds,filename_change_ext(f,""))==-1) {
@@ -78,6 +79,7 @@ cleanup_loadingbar(3)
 
 if (has_fonts) {
     fonts=load_index("fonts")
+    check_tree_vs_index("fonts",fonts,".txt")
     for (f=file_find_first(root+"fonts\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
         if (ds_list_find_index(fonts,filename_change_ext(f,""))==-1) {
@@ -93,6 +95,7 @@ cleanup_loadingbar(4)
 
 if (has_objects) {
     objects=load_index("objects")
+    check_tree_vs_index("objects",objects,".txt")
     for (f=file_find_first(root+"objects\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
         if (ds_list_find_index(objects,filename_change_ext(f,""))==-1) {
@@ -108,6 +111,7 @@ cleanup_loadingbar(5)
 
 if (has_paths) {
     paths=load_index("paths")
+    check_tree_vs_index("paths",paths,"\path.txt")
     i=0
     for (f=file_find_first(root+"paths\*",fa_directory);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
@@ -128,6 +132,7 @@ cleanup_loadingbar(6)
 
 if (has_scripts) {
     scripts=load_index("scripts")
+    check_tree_vs_index("scripts",scripts,".gml")
     for (f=file_find_first(root+"scripts\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
         if (ds_list_find_index(scripts,filename_change_ext(f,""))==-1) {
@@ -143,6 +148,7 @@ cleanup_loadingbar(7)
 
 if (has_sounds) {
     sounds=load_index("sounds")
+    check_tree_vs_index("sounds",sounds,".txt")
     for (f=file_find_first(root+"sounds\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
         if (ds_list_find_index(sounds,filename_change_ext(f,""))==-1) {
@@ -158,6 +164,7 @@ cleanup_loadingbar(8)
 
 if (has_sprites) {
     sprites=load_index("sprites")
+    check_tree_vs_index("sprites",sprites,"\sprite.txt")
     i=0
     for (f=file_find_first(root+"sprites\*",fa_directory);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
@@ -194,6 +201,7 @@ cleanup_loadingbar(9)
 
 if (has_timelines) {
     timelines=load_index("timelines")
+    check_tree_vs_index("timelines",timelines,".gml")
     for (f=file_find_first(root+"timelines\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
         if (ds_list_find_index(timelines,filename_change_ext(f,""))==-1) {
@@ -224,6 +232,7 @@ cleanup_loadingbar(11)
 
 //rooms
 rooms=load_index("rooms")
+check_tree_vs_index("rooms",rooms,"\room.txt")
 i=0 j=0
 for (f=file_find_first(root+"rooms\*",fa_directory);f!="";f=file_find_next()) {
     if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
