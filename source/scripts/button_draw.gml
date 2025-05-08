@@ -17,7 +17,8 @@ if (object_index==Button) {
         if (type==0) {
             draw_set_halign(1)
             draw_set_valign(1)
-            draw_text(x+w/2,y+h/2,text)
+            if (spr!=noone) draw_text(x+w/2+4,y+h/2-1,text)
+            else draw_text(x+w/2,y+h/2-1,text)
             draw_set_halign(0)
             draw_set_valign(0)
         }
@@ -27,6 +28,10 @@ if (object_index==Button) {
             draw_set_valign(0)
         }
         draw_set_color($ffffff)
+    }
+    if (spr!=noone) {
+        if (text!="") draw_sprite(sprMenuButtons,spr,x+floor(w/2-string_width(text)/2+4),y+floor(h/2))
+        else draw_sprite(sprMenuButtons,spr,x+floor(w/2),y+floor(h/2))
     }
 }
 

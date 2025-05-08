@@ -1,4 +1,4 @@
-caption=Game Maker 8.2 Hub
+caption=8.2 Hub
 width=1080
 height=480
 snap_x=32

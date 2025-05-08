@@ -5,19 +5,22 @@ switch (action) {
     case "tooltab": {TAB=tab_tools} break
 
     case "opengmk": {
-        edit_game()
+        with (ctrl) edit_game()
     } break
     case "rungmk": {
-        run_game()
+        with (ctrl) run_game()
     } break
     case "compilegmk": {
-        compile_game()
+        with (ctrl) compile_game()
     } break
     case "browsegmk": {
-        browse_game()
+        with (ctrl) browse_game()
     } break
     case "cleangmk": {
-        clean_game()
+        with (ctrl) clean_game()
+    } break
+    case "website": {
+        url_open("https://gm82.cherry-treehouse.com")
     } break
 
 }

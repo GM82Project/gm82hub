@@ -13,6 +13,7 @@ gray=0
 focus=0
 anchor=0
 visibility=0
+spr=noone
 
 w=32
 h=32

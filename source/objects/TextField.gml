@@ -11,6 +11,7 @@ text=""
 dtext=""
 alt=""
 basealt=""
+spr=noone
 
 k=20
 cursor=""

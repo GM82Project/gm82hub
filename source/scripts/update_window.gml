@@ -9,3 +9,11 @@ if (window_get_width()!=WIDTH || window_get_height()!=HEIGHT) {
     view_hport=HEIGHT
     view_hview=HEIGHT
 }
+
+if (window_has_focus()) {
+    room_speed=display_get_frequency()
+    set_automatic_draw(1)
+} else {
+    room_speed=10
+    set_automatic_draw(0)
+}
