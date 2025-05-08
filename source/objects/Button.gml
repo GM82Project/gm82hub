@@ -15,6 +15,7 @@ anchor=0
 visibility=0
 alt=""
 spr=noone
+status=""
 
 w=32
 h=32
@@ -43,6 +44,12 @@ lib_id=1
 action_id=603
 applies_to=self
 */
+if (object_index==Button && type==1) {
+    //checkbox
+    w=24
+    h=24
+}
+
 image_xscale=w
 image_yscale=h
 
@@ -50,6 +57,11 @@ if (action="gitgmk" and GIT==undefined) {
     gray=1
     alt="No known Git tools detected"
 }
+
+if (action="theme custom col mid") text=string(global.col_main)
+if (action="theme custom col up") text=string(global.col_high)
+if (action="theme custom col down") text=string(global.col_low)
+if (action="theme custom col text") text=string(global.col_text)
 #define Other_12
 /*"/*'/**//* YYD ACTION
 lib_id=1

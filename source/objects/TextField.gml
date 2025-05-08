@@ -11,7 +11,9 @@ text=""
 dtext=""
 alt=""
 basealt=""
+status=""
 spr=noone
+visibility=noone
 
 k=20
 cursor=""

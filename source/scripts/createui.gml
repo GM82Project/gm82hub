@@ -78,6 +78,8 @@ i.mytab=tab_recent
 i.anchor=anc_width1
 i.visibility=vis_open
 
+
+//updates tab
 i=instance_create(10,64,Button)
 i.w=256
 i.spr=9
@@ -85,6 +87,82 @@ i.action="website"
 i.text=" 8.2 Project Website"
 i.mytab=tab_updates
 i.anchor=anc_width1
+
+
+//settings tab
+i=instance_create(8,64,Button)
+i.type=1
+i.action="theme dark"
+i.text="Dark"
+i.mytab=tab_settings
+i.status="Default Game Maker 8.2 dark theme."
+
+i=instance_create(8,92,Button)
+i.type=1
+i.action="theme light"
+i.text="Light"
+i.mytab=tab_settings
+i.status="Windows 98-inspired light theme."
+
+i=instance_create(8,120,Button)
+i.type=1
+i.action="theme custom"
+i.text="Custom"
+i.mytab=tab_settings
+i.status="Make a custom theme of your liking using color and edge options."
+
+i=instance_create(112,120,Button)
+i.type=1
+i.action="theme custom hard"
+i.text=""
+i.mytab=tab_settings
+i.status="Hard, polygonal-looking 3D edges. Default GM 8.2 visual design."
+
+i=instance_create(112+28,120,Button)
+i.type=1
+i.action="theme custom soft"
+i.text=""
+i.mytab=tab_settings
+i.status="Rounded, smooth-shaded 3D edges."
+
+i=instance_create(112+28*2,120,Button)
+i.type=1
+i.action="theme custom edge"
+i.text=""
+i.mytab=tab_settings
+i.status="Rounded, smooth-shaded 3D edges, with an outline using the text color."
+
+i=instance_create(40,148,TextField)
+i.h=24
+i.type=1
+i.action="theme custom col mid"
+i.text=""
+i.mytab=tab_settings
+i.status="Main color used for the surface of 3D buttons."
+
+i=instance_create(80,148,TextField)
+i.h=24
+i.type=1
+i.action="theme custom col up"
+i.text=""
+i.mytab=tab_settings
+i.status="Shine color used for 3D buttons."
+
+i=instance_create(120,148,TextField)
+i.h=24
+i.type=1
+i.action="theme custom col down"
+i.text=""
+i.mytab=tab_settings
+i.status="Shade color used for 3D buttons."
+
+i=instance_create(160,148,TextField)
+i.h=24
+i.type=1
+i.action="theme custom col text"
+i.text=""
+i.mytab=tab_settings
+i.status="Text and outline color across the interface."
 
 
 //initialize all buttons

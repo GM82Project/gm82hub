@@ -51,15 +51,17 @@ if (object_index==TextField) {
 
     draw_button_ext(x,y,w,h,0,color)
 
-    if (text="") {
-        str=dtext
-        draw_set_color(global.col_main)
-    } else {
-        str=text
-        draw_set_color(global.col_text)
+    if (type!=1) {
+        if (text="") {
+            str=dtext
+            draw_set_color(global.col_main)
+        } else {
+            str=text
+            draw_set_color(global.col_text)
+        }
+        draw_set_valign(1)
+        draw_text(x+8,y+h/2,str)
+        draw_set_valign(0)
     }
-    draw_set_valign(1)
-    draw_text(x+8,y+h/2,str)
-    draw_set_valign(0)
     draw_set_color($ffffff)
 }

@@ -1,3 +1,13 @@
+var statusbar;
+
+statusbar=""
+
+with (Button) {
+    if (instance_position(MOUSE_X,MOUSE_Y,id)) {
+        statusbar=status
+    }
+}
+
 var width,width2;
 width=0
 width2=0
@@ -64,6 +74,17 @@ if (TAB==tab_recent) {
     draw_set_color(global.col_text)
     draw_text(10,40,"Visit our website to find the latest news and updates:")
     draw_set_color($ffffff)
+} else if (TAB==tab_settings) {
+    draw_button_ext(0,HEIGHT-32,WIDTH,32,1,global.col_main)
+
+    draw_button_ext(0,32,200,200,1,global.col_main)
+    draw_set_color(global.col_text)
+    draw_text(8,32+7,"Theme")
+    draw_set_color($ffffff)
+
+    draw_set_color(global.col_text)
+    draw_text(8,HEIGHT-25,statusbar)
+    draw_set_color($ffffff)
 } else {
     draw_set_color(global.col_text)
     draw_text(10,40,"Work in progress!")
@@ -76,9 +97,7 @@ with (Button) {
     if (anchor&anc_width2) w=width2-8
     if (visibility==vis_open && width2==0) x=-999
 
-    if (mouse_check_button_pressed(mb_left)) if (instance_position(MOUSE_X,MOUSE_Y,id)) {
-        event_user(2)
-    }
+    if (instance_position(MOUSE_X,MOUSE_Y,id)) if (mouse_check_button_pressed(mb_left)) event_user(2)
 
     if (mytab==TAB || mytab==-1) button_draw()
 }
