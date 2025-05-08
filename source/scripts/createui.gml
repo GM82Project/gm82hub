@@ -69,6 +69,15 @@ i.mytab=tab_recent
 i.anchor=anc_width1
 i.visibility=vis_open
 
+i=instance_create(416,32,Button)
+i.w=64
+i.spr=GITSPR
+i.action="gitgmk"
+i.text=" Git"
+i.mytab=tab_recent
+i.anchor=anc_width1
+i.visibility=vis_open
+
 i=instance_create(10,64,Button)
 i.w=256
 i.spr=9

@@ -2,7 +2,7 @@ globalvar
     WIDTH,HEIGHT,
     MOUSE_X,MOUSE_Y,
 
-    GAMEMAKER,
+    GAMEMAKER,GIT,GITCMD,GITSPR,
 
     EXTDIR,
 

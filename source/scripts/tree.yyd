@@ -33,12 +33,14 @@
 	|textfield_actions
 	|update_window
 	|change_currec
+	|drawtooltip
 +actions
 	|edit_game
-	|browse_game
 	|run_game
 	|compile_game
 	|clean_game
+	|browse_game
+	|git_game
 |globalvars
 |create
 |createui

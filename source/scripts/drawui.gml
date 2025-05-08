@@ -71,7 +71,6 @@ if (TAB==tab_recent) {
 }
 
 
-
 with (Button) {
     if (anchor&anc_width1) x=width+xstart
     if (anchor&anc_width2) w=width2-8
@@ -83,3 +82,5 @@ with (Button) {
 
     if (mytab==TAB || mytab==-1) button_draw()
 }
+
+with (Button) if (focus && alt!="" && mytab==TAB) drawtooltip(alt)

@@ -19,6 +19,9 @@ switch (action) {
     case "cleangmk": {
         with (ctrl) clean_game()
     } break
+    case "gitgmk": {
+        with (ctrl) git_game()
+    } break
     case "website": {
         url_open("https://gm82.cherry-treehouse.com")
     } break
