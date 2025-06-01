@@ -28,11 +28,11 @@ i=0 repeat (8) {
         if (file_exists(metafn)) {
             ds_map_read_ini(meta,metafn)
             dsmap(meta,"cleanstamp",real(dsmap(meta,"cleanstamp")))
-        } else {
+        }/* else {
             dsmap(meta,"cleanstamp",dsmap(map,"timestamp"))
             directory_create(filename_dir(name)+"\cache")
             ds_map_write_ini(meta,metafn)
-        }
+        }*/
         dsmap(map,"meta",meta)
     }
 i+=1}
