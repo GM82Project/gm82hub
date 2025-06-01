@@ -22,6 +22,7 @@ if (file_exists(find)) {
     GIT=find
     GITCMD=" browse "+qt+"%"+qt
     GITSPR=11
+    GITNAME="GitExtensions"
 } else {
     /*find=whatever github desktop installs to
     if (file_exists(find)) {

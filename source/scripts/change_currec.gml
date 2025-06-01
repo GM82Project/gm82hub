@@ -1,6 +1,6 @@
 CURREC=argument0
 if (dsmap(dslist(RECLIST,CURREC),"type")) {
-    with (Button) if (action=="cleangmk") {gray=false alt=""}
+    with (Button) if (action=="cleangmk") {gray=false alt="Remove unused files and#check for broken trees"}
 } else {
     with (Button) if (action=="cleangmk") {gray=true alt="You can't clean a gmk file"}
 }
@@ -13,4 +13,4 @@ repeat (string_count("\",path)) {
     path=directory_previous(path)
 }
 
-with (Button) if (action=="gitgmk" and GIT!=undefined) {gray=!yay if (gray) alt="No repository found" else alt=""}
+with (Button) if (action=="gitgmk" and GIT!=undefined) {gray=!yay if (gray) alt="No repository found" else alt="Launch "+GITNAME}

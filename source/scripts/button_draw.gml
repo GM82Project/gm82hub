@@ -5,12 +5,22 @@ switch (action) {
     case "uptab": {up=(TAB!=tab_updates) && !down} break
     case "settab": {up=(TAB!=tab_settings) && !down} break
     case "tooltab": {up=(TAB!=tab_tools) && !down} break
+
+    case "theme dark": {up=(theme!=0) && !down check=(theme==0)} break
+    case "theme light": {up=(theme!=1) && !down check=(theme==1)} break
+    case "theme custom": {up=(theme!=2) && !down check=(theme==2)} break
+
+    case "theme custom hard": {up=(themebutton!=0) && !down check=(themebutton==0)} break
+    case "theme custom soft": {up=(themebutton!=1) && !down check=(themebutton==1)} break
+    case "theme custom edge": {up=(themebutton!=2) && !down check=(themebutton==2)} break
+
+
 }
 
 if (object_index==Button) {
     if (gray) up=0
 
-    draw_button_ext(x,y,w,h,up,color)
+    draw_button_ext(x,y,w,h,up,global.col_main)
 
     if (text!="") {
         draw_set_color(global.col_text)
@@ -33,6 +43,7 @@ if (object_index==Button) {
         if (text!="") draw_sprite(sprMenuButtons,spr,x+floor(w/2-string_width(text)/2+4),y+floor(h/2))
         else draw_sprite(sprMenuButtons,spr,x+floor(w/2),y+floor(h/2))
     }
+    if (check) draw_sprite(sprMenuButtons,12,x+floor(w/2),y+floor(h/2))
 }
 
 if (object_index==TextField) {

@@ -1,5 +1,11 @@
 var statusbar;
 
+if (theme==1) {
+    draw_set_blend_mode_ext(10,1)
+    draw_rect(0,0,WIDTH,HEIGHT,$ffffff)
+    draw_set_blend_mode(0)
+}
+
 statusbar=""
 
 with (Button) {
@@ -62,7 +68,7 @@ if (TAB==tab_recent) {
             cleanstamp=timestamp_nicer(dsmap(dsmap(rec,"meta"),"cleanstamp"))
             if (timestamp==cleanstamp) cleanstamp="Never"
             draw_set_color(global.col_text)
-            draw_text(dx+38,dy+36,dsmap(rec,"path")+"#"+dsmap(rec,"pname")+"#Modified: "+timestamp+"#Last cleaned: "+cleanstamp)
+            draw_text(dx+38,dy+36,dsmap(rec,"path")+"#Version: "+dsmap(rec,"pname")+"#Modified: "+timestamp+"#Last cleaned: "+cleanstamp)
         } else {
             draw_sprite(sprGMK,0,dx,dy+38)
             draw_set_color(global.col_text)

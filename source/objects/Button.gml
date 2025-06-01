@@ -5,7 +5,6 @@ action_id=603
 applies_to=self
 */
 down=0
-color=global.col_main
 type=0
 mytab=-1
 downcount=0
@@ -16,6 +15,7 @@ visibility=0
 alt=""
 spr=noone
 status=""
+check=0
 
 w=32
 h=32
