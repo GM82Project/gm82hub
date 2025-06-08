@@ -1,6 +1,6 @@
 ///check_tree_vs_index(treename,index,suffix)
 
-var tree,tree_real,treefn,indexfn,token,obj,index;
+var write_tree,problem,tree,tree_real,treefn,indexfn,token,obj,index,item,fail,fixed;
 
 tree=dslist()
 tree_real=dslist()
@@ -8,20 +8,42 @@ tree_real=dslist()
 treefn=root+argument0+"\tree.yyd"
 indexfn=root+argument0+"\index.yyd"
 
+write_tree=false
+fail=false fixed=false
+problem=""
+
 repeat (string_token_start(file_text_read_all(treefn,chr_lf),chr_lf)) {
     token=string_token_next()
     obj=string_trim(token,chr(vk_tab))
     if (string_starts_with(obj,"|")) {
-        ds_list_add(tree,string_trim(obj,"|"))
+        item=string_trim(obj,"|")
+        if (ds_list_find_index(tree,item)!=-1) {
+            if not (fail) {
+                fail=true
+                fixed=show_question("It looks like the "+argument0+" tree has duplicate entries. Would you like to fix that?")
+            }
+            if (fixed) {
+                index_log+=item+" was removed from the "+argument0+" tree#"
+                breakage+=1
+            } else {
+                ds_list_add(tree,item)
+                ds_list_add(tree_real,token)
+            }
+        } else {
+            ds_list_add(tree,item)
+            ds_list_add(tree_real,token)
+        }
     } else {
         ds_list_add(tree,undefined)
+        ds_list_add(tree_real,token)
     }
-    ds_list_add(tree_real,token)
 }
+
+write_tree=fixed
 
 index=argument1
 
-var fail,problem,missing_tree,missing_index,fixed,i;
+var missing_tree,missing_index,i;
 
 missing_tree=dslist()
 missing_index=dslist()
@@ -41,7 +63,6 @@ i=0 repeat (ds_list_size(tree)) {
 i+=1}
 
 if (fail) if (show_question("It looks like the "+argument0+" index is broken. Would you like to attempt an automatic fix?")) {
-    problem=""
     i=0 repeat (ds_list_size(missing_tree)) {
         obj=ds_list_find_value(missing_tree,i)
         if (file_exists(root+argument0+"\"+obj+argument2)) {
@@ -71,11 +92,15 @@ if (fail) if (show_question("It looks like the "+argument0+" index is broken. Wo
         }
     i+=1}
 
-    file_text_write_all(treefn,string_replace_all(dslist(tree_real),chr_cr,""))
-    file_text_write_all(indexfn,string_replace_all(dslist(index),chr_cr,""))
+    write_tree=true
 
     fixed=true
     index_log+=problem //outer instance variable
+}
+
+if (write_tree) {
+    file_text_write_all(treefn,string_replace_all(dslist(tree_real),chr_cr,""))
+    file_text_write_all(indexfn,string_replace_all(dslist(index),chr_cr,""))
 }
 
 ds_list_destroy(tree_real)
