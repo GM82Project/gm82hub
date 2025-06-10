@@ -7,6 +7,15 @@
 	|delete_file
 	|cleanup_loadingbar
 	|filename_valid
+	|invalid_variable_name
+	|valid_variable_name
+	|rename_asset
+	|wrong_case
+	|remove_plural
+	|rename_file
+	|get_sound_extension
+	|check_file_case
+	|ds_list_search_uncase
 +theming
 	|theme_init
 	|theme_apply

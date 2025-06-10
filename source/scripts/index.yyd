@@ -206,3 +206,13 @@ save_recent_meta
 check_tree_vs_index
 git_game
 drawtooltip
+invalid_variable_name
+valid_variable_name
+rename_asset
+
+remove_plural
+rename_file
+get_sound_extension
+wrong_case
+check_file_case
+ds_list_search_uncase

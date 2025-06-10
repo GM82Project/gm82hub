@@ -28,10 +28,12 @@ has_triggers=real(dsmap(map,"has_triggers"))
 
 delete_log=""
 index_log=""
+unfixable_log=""
 files=0
 saved=0
 folders=0
 breakage=0
+unfixable=0
 
 fn=root+"game_errors.log"
 if (file_exists(fn)) {
@@ -45,13 +47,13 @@ if (has_backgrounds) {
     if (check_tree_vs_index("backgrounds",backgrounds,".txt")) breakage+=1
     for (f=file_find_first(root+"backgrounds\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
-        if (ds_list_find_index(backgrounds,filename_change_ext(f,""))==-1) {
+        if (ds_list_search_uncase(backgrounds,filename_change_ext(f,""))==-1) {
             delete_file(root+"backgrounds\"+f)
         }
     }file_find_close()
     for (f=file_find_first(root+"cache\backgrounds\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f=="..") continue
-        if (ds_list_find_index(backgrounds,filename_change_ext(f,""))==-1) {
+        if (ds_list_search_uncase(backgrounds,filename_change_ext(f,""))==-1) {
             delete_file(root+"cache\backgrounds\"+f)
         }
     }file_find_close()
@@ -67,7 +69,7 @@ if (has_datafiles) {
     datafiles=load_index("datafiles")
     for (f=file_find_first(root+"datafiles\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd" || f=="include") continue
-        if (ds_list_find_index(datafiles,filename_change_ext(f,""))==-1) {
+        if (ds_list_search_uncase(datafiles,filename_change_ext(f,""))==-1) {
             delete_file(root+"datafiles\"+f)
             delete_file(root+"datafiles\include\"+string_copy(f,1,string_length(f)-3))
         }
@@ -84,7 +86,7 @@ if (has_fonts) {
     if (check_tree_vs_index("fonts",fonts,".txt")) breakage+=1
     for (f=file_find_first(root+"fonts\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
-        if (ds_list_find_index(fonts,filename_change_ext(f,""))==-1) {
+        if (ds_list_search_uncase(fonts,filename_change_ext(f,""))==-1) {
             delete_file(root+"fonts\"+f)
         }
     }file_find_close()
@@ -100,7 +102,7 @@ if (has_objects) {
     if (check_tree_vs_index("objects",objects,".txt")) breakage+=1
     for (f=file_find_first(root+"objects\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
-        if (ds_list_find_index(objects,filename_change_ext(f,""))==-1) {
+        if (ds_list_search_uncase(objects,filename_change_ext(f,""))==-1) {
             delete_file(root+"objects\"+f)
         }
     }file_find_close()
@@ -117,7 +119,7 @@ if (has_paths) {
     i=0
     for (f=file_find_first(root+"paths\*",fa_directory);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
-        if (ds_list_find_index(paths,f)==-1) {
+        if (ds_list_search_uncase(paths,f)==-1) {
             delete[i]=root+"paths\"+f i+=1
         }
     }file_find_close()
@@ -137,7 +139,7 @@ if (has_scripts) {
     if (check_tree_vs_index("scripts",scripts,".gml")) breakage+=1
     for (f=file_find_first(root+"scripts\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
-        if (ds_list_find_index(scripts,filename_change_ext(f,""))==-1) {
+        if (ds_list_search_uncase(scripts,filename_change_ext(f,""))==-1) {
             delete_file(root+"scripts\"+f)
         }
     }file_find_close()
@@ -153,7 +155,7 @@ if (has_sounds) {
     if (check_tree_vs_index("sounds",sounds,".txt")) breakage+=1
     for (f=file_find_first(root+"sounds\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
-        if (ds_list_find_index(sounds,filename_change_ext(f,""))==-1) {
+        if (ds_list_search_uncase(sounds,filename_change_ext(f,""))==-1) {
             delete_file(root+"sounds\"+f)
         }
     }file_find_close()
@@ -171,7 +173,7 @@ if (has_sprites) {
     for (f=file_find_first(root+"sprites\*",fa_directory);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
         spr=root+"sprites\"+f
-        if (ds_list_find_index(sprites,f)==-1) {
+        if (ds_list_search_uncase(sprites,f)==-1) {
             delete[i]=spr i+=1
         } else {
             f=file_text_open_read(spr+"\sprite.txt")
@@ -189,7 +191,7 @@ if (has_sprites) {
     }
     for (f=file_find_first(root+"cache\sprites\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f=="..") continue
-        if (ds_list_find_index(sprites,filename_change_ext(f,""))==-1) {
+        if (ds_list_search_uncase(sprites,filename_change_ext(f,""))==-1) {
             delete_file(root+"cache\sprites\"+f)
         }
     }file_find_close()
@@ -206,7 +208,7 @@ if (has_timelines) {
     if (check_tree_vs_index("timelines",timelines,".gml")) breakage+=1
     for (f=file_find_first(root+"timelines\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd" || f=="tree.yyd") continue
-        if (ds_list_find_index(timelines,filename_change_ext(f,""))==-1) {
+        if (ds_list_search_uncase(timelines,filename_change_ext(f,""))==-1) {
             delete_file(root+"timelines\"+f)
         }
     }file_find_close()
@@ -221,7 +223,7 @@ if (has_triggers) {
     triggers=load_index("triggers")
     for (f=file_find_first(root+"triggers\*.*",0);f!="";f=file_find_next()) {
         if (f=="." || f==".." || f=="index.yyd") continue
-        if (ds_list_find_index(triggers,filename_change_ext(f,""))==-1) {
+        if (ds_list_search_uncase(triggers,filename_change_ext(f,""))==-1) {
             delete_file(root+"triggers\"+f)
         }
     }file_find_close()
@@ -242,7 +244,7 @@ for (f=file_find_first(root+"rooms\*",fa_directory);f!="";f=file_find_next()) {
     if (!directory_exists(rom)) {
         //it's actually a stray file. in the room folder
         delete_file(rom)
-    } else if (ds_list_find_index(rooms,f)==-1) {
+    } else if (ds_list_search_uncase(rooms,f)==-1) {
         delete[i]=rom i+=1
     } else {
         check[j]=rom j+=1 
@@ -271,12 +273,15 @@ instances=""
 screen_redraw()
 projname=dsmap(dslist(RECLIST,CURREC),"name")
 cleanupmsg='Cleanup of project "'+projname+'":##'
-if (files==0 && folders==0 && breakage==0) {
+if (files==0 && folders==0 && breakage==0 && unfixable==0) {
     show_message(cleanupmsg+"No cleanup was necessary at this moment.")
 } else {
     if (saved<1024) saved=string(saved)+" bytes"
     else if (saved<1024*1024) saved=string(saved/1024)+" KB"
     else saved=string(saved/1024/1024)+" MB"
+    
+    if (breakage) cleanupmsg+="#Since problems had to be fixed, please check your project in the IDE.##"
+    if (unfixable) cleanupmsg+="#Note that some problems couldn't be fixed. Please open the IDE and click on the broom icon, then go through the list.##"
 
     if (files==1) files="1 file"
     else files=string(files)+" files"
@@ -286,12 +291,17 @@ if (files==0 && folders==0 && breakage==0) {
     
     if (breakage==1) breakage="1 problem"
     else breakage=string(breakage)+" problems"
+    
+    if (unfixable==1) unfixable="1 unfixable problem"
+    else unfixable=string(unfixable)+" unfixable problems"
 
-    cleanupmsg+="- "+folders+" removed#- "+files+" deleted#- "+breakage+" fixed#- "+saved+" saved"
+    cleanupmsg+="- "+folders+" removed#- "+files+" deleted#- "+breakage+" fixed#- "+unfixable+" left to fix manually#- "+saved+" saved"
+    
+    index_log=unfixable_log+index_log
     
     if (show_question(cleanupmsg+"##Would you like to see a log file?")) {
         fn=temp_directory+"\"+filename_valid(projname)+" - cleanup.log"
-        file_text_write_all(fn,string_replace_all(cleanupmsg,"#",chr_crlf)+chr_crlf+chr_crlf+string_replace_all(index_log,"#",chr_crlf)+chr_crlf+chr_crlf+delete_log)
+        file_text_write_all(fn,string_replace_all(cleanupmsg,"#",chr_crlf)+chr_crlf+chr_crlf+string_replace_all(index_log,"#",chr_crlf)+chr_crlf+delete_log)
         execute_program("notepad",fn,false)
     }
 }

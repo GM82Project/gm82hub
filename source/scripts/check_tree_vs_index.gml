@@ -17,7 +17,7 @@ repeat (string_token_start(file_text_read_all(treefn,chr_lf),chr_lf)) {
     obj=string_trim(token,chr(vk_tab))
     if (string_starts_with(obj,"|")) {
         item=string_trim(obj,"|")
-        if (ds_list_find_index(tree,item)!=-1) {
+        if (ds_list_search_uncase(tree,item)!=-1) {
             if not (fail) {
                 fail=true
                 fixed=show_question("It looks like the "+argument0+" tree has duplicate entries. Would you like to fix that?")
@@ -52,14 +52,16 @@ fail=false fixed=false
 
 i=0 repeat (ds_list_size(index)) {
     obj=ds_list_find_value(index,i)
-    if (obj!="")
-        if (ds_list_find_index(tree,obj)==-1) {fail=true ds_list_add(missing_tree,obj)}
+    if (obj!="") {
+        if (ds_list_search_uncase(tree,obj)==-1) {fail=true ds_list_add(missing_tree,obj)}
+        if (invalid_variable_name(obj)) {unfixable+=1 unfixable_log+=remove_plural(argument0)+" "+obj+" has an invalid name#"}
+    }
 i+=1}
 
 i=0 repeat (ds_list_size(tree)) {
     obj=ds_list_find_value(tree,i)
     if (obj!=undefined)
-        if (ds_list_find_index(index,obj)==-1) {fail=true ds_list_add(missing_index,obj)}
+        if (ds_list_search_uncase(index,obj)==-1) {fail=true ds_list_add(missing_index,obj)}
 i+=1}
 
 if (fail) if (show_question("It looks like the "+argument0+" index is broken. Would you like to attempt an automatic fix?")) {
@@ -72,7 +74,7 @@ if (fail) if (show_question("It looks like the "+argument0+" index is broken. Wo
             problem+=obj+" was added to the "+argument0+" tree#"
         } else {
             //file doesn't exist, and is on index, remove from index
-            pos=ds_list_find_index(index,obj)
+            pos=ds_list_search_uncase(index,obj)
             ds_list_delete(index,pos)
             problem+=obj+" was removed from the "+argument0+" index#"
         }
@@ -85,7 +87,7 @@ if (fail) if (show_question("It looks like the "+argument0+" index is broken. Wo
             problem+=obj+" was added to the "+argument0+" index#"
         } else {
             //file doesn't exist, and is on tree, remove from tree
-            pos=ds_list_find_index(tree,obj)
+            pos=ds_list_search_uncase(tree,obj)
             ds_list_delete(tree,pos)
             ds_list_delete(tree_real,pos)
             problem+=obj+" was removed from the "+argument0+" tree#"
