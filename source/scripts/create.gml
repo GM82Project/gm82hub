@@ -17,6 +17,7 @@ GAMEMAKER=registry_read_string_ext("SOFTWARE\Game Maker\Version 8.2\Preferences"
 GIT=undefined
 GITSPR=10
 
+
 find=registry_read_string_ext("SOFTWARE\GitExtensions","InstallDir")+"\GitExtensions.exe"
 if (file_exists(find)) {
     GIT=find
@@ -24,13 +25,19 @@ if (file_exists(find)) {
     GITSPR=11
     GITNAME="GitExtensions"
 } else {
-    /*find=whatever github desktop installs to
+    find="C:\Program Files\TortoiseGit\bin\TortoiseGitProc.exe"
     if (file_exists(find)) {
         GIT=find
-    } else {
-        find=ask square wtf is that tortoise thing he uses
+        GITCMD=" /command:sync /path:"+qt+"%"+qt
+        GITSPR=13
+        GITNAME="TortoiseGit"
+    }/* else {
+        find=github desktop
         if (file_exists(find)) {
             GIT=find
+            GITCMD=?
+            GITSPR=10
+            GITNAME="GitHub Desktop"
         }
     } */
 }
