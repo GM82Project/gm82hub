@@ -31,15 +31,15 @@ if (file_exists(find)) {
         GITCMD=" /command:sync /path:"+qt+"%"+qt
         GITSPR=13
         GITNAME="TortoiseGit"
-    }/* else {
-        find=github desktop
+    } else {
+        find=directory_appdata+"Local\GitHubDesktop\bin\github.bat"
         if (file_exists(find)) {
             GIT=find
-            GITCMD=?
+            GITCMD=" "+qt+"%"+qt
             GITSPR=10
             GITNAME="GitHub Desktop"
         }
-    } */
+    }
 }
 
 theme_init()

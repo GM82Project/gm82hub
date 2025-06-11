@@ -1,2 +1,2 @@
-execute_program(GIT,string_replace(GITCMD,"%",dsmap(dslist(RECLIST,CURREC),"path")),0)
+execute_program_silent_async(GIT+" "+string_replace(GITCMD,"%",dsmap(dslist(RECLIST,CURREC),"path")))
 window_minimize()
