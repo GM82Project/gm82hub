@@ -1,3 +1,9 @@
+globalvar DEEP_CLEAN;
+
+DEEP_CLEAN=show_menu("Fast Clean|Deep Clean",-1)
+
+if (DEEP_CLEAN==-1) exit
+
 draw_rect(0,0,WIDTH,HEIGHT,0,0.5)
 
 cx=WIDTH div 2
@@ -5,7 +11,7 @@ cy=HEIGHT div 2
 
 draw_button_ext(cx-200,cy-50,400,100,1,global.col_main)
 draw_set_color(global.col_text)
-draw_text(cx-200+16,cy-50+16,"Cleaning project...")
+draw_text(cx-200+16,cy-50+16,pick(DEEP_CLEAN,"C","Deep c")+"leaning project...")
 cleanup_loadingbar(0)
 screen_refresh()
 

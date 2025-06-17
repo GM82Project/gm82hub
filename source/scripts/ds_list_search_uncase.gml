@@ -1,6 +1,8 @@
 ///ds_list_search_uncase(list,term)
 //returns if the term is on the list, case insensitive
 
+if (!DEEP_CLEAN) return ds_list_find_index(argument0,argument1)
+
 var i,find;
 
 find=string_lower(argument1)

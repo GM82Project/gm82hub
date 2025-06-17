@@ -55,7 +55,6 @@ i.w=80
 i.spr=4
 i.action="cleangmk"
 i.text=" Clean"
-
 i.mytab=tab_recent
 i.anchor=anc_width1
 i.visibility=vis_open
