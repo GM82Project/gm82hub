@@ -24,6 +24,8 @@
 	|draw_button_ext
 +io
 	|load_recent
+	|add_recent
+	|write_recent
 	|load_extensions
 	+subroutines
 		|gex_generate_table

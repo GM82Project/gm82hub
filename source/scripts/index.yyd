@@ -216,3 +216,5 @@ get_sound_extension
 wrong_case
 check_file_case
 ds_list_search_uncase
+add_recent
+write_recent

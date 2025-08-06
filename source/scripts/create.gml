@@ -52,3 +52,5 @@ load_recent()
 load_extensions()
 
 set_application_title(room_caption)
+
+file_drag_enable(1)
