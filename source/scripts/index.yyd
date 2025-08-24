@@ -218,3 +218,4 @@ check_file_case
 ds_list_search_uncase
 add_recent
 write_recent
+find_git

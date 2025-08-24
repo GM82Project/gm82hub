@@ -1,4 +1,5 @@
-ds_list_clear(RECLIST)
+RECLIST=dslist()
+CURREC=noone
 
 i=0 do {
     name=registry_read_string_ext("SOFTWARE\Game Maker\Version 8.2\Preferences","Recent"+string(i))

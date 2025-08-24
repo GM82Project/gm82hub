@@ -36,6 +36,7 @@
 		|clear_func_list
 		|save_recent_meta
 		|check_tree_vs_index
+	|find_git
 +ui
 	|button_actions
 	|button_held
