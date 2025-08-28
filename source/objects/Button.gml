@@ -53,7 +53,7 @@ if (object_index==Button && type==1) {
 image_xscale=w
 image_yscale=h
 
-if (action="gitgmk" and GIT==undefined) {
+if (action="gitgmk" and is_undefined(GIT)) {
     gray=1
     alt="No known Git tools detected"
 }

@@ -9,8 +9,8 @@ HEIGHT=room_height
 GAMEMAKER=registry_read_string_ext("SOFTWARE\Game Maker\Version 8.2\Preferences","Directory")+"GameMaker.exe"
 
 theme_init()
-createui()
 find_git()
+createui()
 load_recent()
 load_extensions()
 
