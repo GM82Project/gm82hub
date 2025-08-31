@@ -49,4 +49,6 @@ message_mouse_color(global.col_text)
 message_caption(1,"Message")
 message_size(500,-1)
 
+global.buttontex=buttontex
+
 draw_set_font(fntCode)

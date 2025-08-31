@@ -163,6 +163,8 @@ i.text=""
 i.mytab=tab_settings
 i.status="Text and outline color across the interface."
 
+instance_create(200,32,PrefGit)
+
 
 //initialize all buttons
 with (Button) event_user(0)

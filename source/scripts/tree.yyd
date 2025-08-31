@@ -46,6 +46,8 @@
 	|update_window
 	|change_currec
 	|drawtooltip
+	|git_radio_handler
+	|ui_integrated_styler
 +actions
 	|edit_game
 	|run_game

@@ -219,3 +219,5 @@ ds_list_search_uncase
 add_recent
 write_recent
 find_git
+git_radio_handler
+ui_integrated_styler

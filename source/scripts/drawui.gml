@@ -88,6 +88,8 @@ if (TAB==tab_recent) {
     draw_text(8,32+7,"Theme")
     draw_set_color($ffffff)
 
+    if (statusbar=="") statusbar=ui_get_help()
+
     draw_set_color(global.col_text)
     draw_text(8,HEIGHT-25,statusbar)
     draw_set_color($ffffff)
