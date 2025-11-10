@@ -13,4 +13,4 @@ repeat (string_count("\",path)) {
     path=directory_previous(path)
 }
 
-with (Button) if (action=="gitgmk" and GIT!=undefined) {gray=!yay if (gray) alt="No repository found" else alt="Launch "+GITNAME}
+with (Button) if (action=="gitgmk" and GIT!=undefined) gray=!yay

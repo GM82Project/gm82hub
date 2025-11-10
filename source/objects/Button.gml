@@ -38,6 +38,12 @@ if (down!=0) {
         down=0
     }
 } else downcount=0
+
+if (action=="opengmk")    alt=pick(keyboard_check(vk_control),"Open Game Maker to edit the game","Open Game Maker and close Hub")
+if (action=="rungmk")     alt=pick(keyboard_check(vk_control),"Run a test build of the game","Run a test build and close Hub")
+if (action=="compilegmk") alt=pick(keyboard_check(vk_control),"Build the game","Build the game and close Hub")
+if (action=="browsegmk")  alt=pick(keyboard_check(vk_control),"Open the folder containing the game","Open the folder and close Hub")
+if (action=="gitgmk" and GIT!=undefined) {if (gray) alt="No repository found" else alt=pick(keyboard_check(vk_control),"Launch "+GITNAME,"Launch "+GITNAME+" and close Hub")}
 #define Other_10
 /*"/*'/**//* YYD ACTION
 lib_id=1

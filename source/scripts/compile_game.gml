@@ -1,3 +1,9 @@
+var exiting;
+
+exiting=keyboard_check(vk_control)
+
 exe=get_save_filename("Windows EXE Runtime|*.exe",dsmap(dslist(RECLIST,CURREC),"name")+".exe")
-if (exe!="")
+if (exe!="") {
     execute_program(GAMEMAKER,qt+dsmap(dslist(RECLIST,CURREC),"path")+qt+" --build "+qt+exe+qt,0)
+    if (exiting) game_end()
+}

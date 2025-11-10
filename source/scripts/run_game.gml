@@ -1,3 +1,7 @@
+var exiting;
+
+exiting=keyboard_check(vk_control)
+
 path=dsmap(dslist(RECLIST,CURREC),"path")
 exe=filename_change_ext(path,".exe")
 if (file_exists(exe)) exe=filename_change_ext(filename_change_ext(exe,"")+"_"+string(current_time),".exe")
@@ -8,4 +12,5 @@ set_working_directory(filename_dir(path))
 execute_program(exe,"",1)
 sleep(100)
 file_delete(exe)
-window_restore()
+
+if (exiting) game_end() else window_restore()
