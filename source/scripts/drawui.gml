@@ -70,7 +70,7 @@ if (TAB==tab_recent) {
             texture_set_interpolation(0)
             timestamp=timestamp_nicer(dsmap(rec,"timestamp"))
             cleanstamp=timestamp_nicer(dsmap(dsmap(rec,"meta"),"cleanstamp"))
-            if (timestamp==cleanstamp) cleanstamp="Never"
+            if (timestamp==cleanstamp || !ds_map_exists(dsmap(rec,"meta"),"cleanstamp")) cleanstamp="Never"
             draw_set_color(global.col_text)
             draw_text(dx+38,dy+36,dsmap(rec,"path")+"#Version: "+dsmap(rec,"pname")+"#Modified: "+timestamp+"#Last cleaned: "+cleanstamp)
         } else {
