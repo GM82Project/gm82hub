@@ -47,7 +47,7 @@ if (TAB==tab_recent) {
         else draw_sprite_stretched(sprGMK,0,8,dy+4,16,16)
         texture_set_interpolation(0)
         draw_set_color(global.col_text)
-        draw_text(28,dy+2,string_ellipsis(dsmap(rec,"name"),width-32))
+        draw_text(28,dy+2,string_truncate(dsmap(rec,"name"),width-32))
         draw_set_color($ffffff)
         draw_line_color(4,dy+24,width-4,dy+24,global.col_high,global.col_high)
     i+=1}
