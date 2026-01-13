@@ -27,7 +27,7 @@ if (TAB==tab_recent) {
     i=0 repeat (ds_list_size(RECLIST)) {
         width=max(width,string_width(dsmap(dslist(RECLIST,i),"name")))
     i+=1}
-    width+=16+16+4
+    width=min(450,width+16+16+4)
 
     draw_button_ext(0,32,width,HEIGHT-32,0,global.col_main)
 
@@ -47,7 +47,7 @@ if (TAB==tab_recent) {
         else draw_sprite_stretched(sprGMK,0,8,dy+4,16,16)
         texture_set_interpolation(0)
         draw_set_color(global.col_text)
-        draw_text(28,dy+2,dsmap(rec,"name"))
+        draw_text(28,dy+2,string_ellipsis(dsmap(rec,"name"),width-32))
         draw_set_color($ffffff)
         draw_line_color(4,dy+24,width-4,dy+24,global.col_high,global.col_high)
     i+=1}
