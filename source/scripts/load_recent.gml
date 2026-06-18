@@ -16,7 +16,29 @@ i=0 repeat (8) {
     add_recent(name)
 i+=1}
 
-if (ds_list_size(RECLIST)) {
+numb=ds_list_size(RECLIST)
+
+if (numb) {
+    //sort list by project timestamp
+    prio=ds_priority_create()
+
+    i=0 repeat (numb) {
+        map=dslist(RECLIST,i)
+        ds_priority_add(prio,map,dsmap(map,"timestamp"))
+    i+=1}
+
+    newlist=dslist()
+    repeat (numb) {
+        ds_list_add(newlist,ds_priority_delete_max(prio))
+    }
+
+    ds_priority_destroy(prio)
+
+    ds_list_destroy(RECLIST)
+
+    RECLIST=newlist
+
+
     change_currec(0)
     write_recent()
 }
