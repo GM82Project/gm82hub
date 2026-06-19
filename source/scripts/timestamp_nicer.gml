@@ -1,6 +1,6 @@
 var dayspan,s,s2,s3,hourspan,minspan,yearspan,monthspan;
 
-if (string(argument0)=="-1") return "Never"
+if (is_undefined(argument0) or string(argument0)=="-1") return "Never"
 
 dayspan=date_day_span(argument0,date_current_datetime())
 if (dayspan<1) {
