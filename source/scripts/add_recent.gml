@@ -35,6 +35,7 @@ metafn=filename_dir(argument0)+"\cache\gm82hub.meta"
 if (file_exists(metafn)) {
     ds_map_read_ini(meta,metafn)
     dsmap(meta,"cleanstamp",real(dsmap(meta,"cleanstamp")))
+    dsmap(meta,"timespent",real(dsmap(meta,"timespent")))
 }/* else {
     dsmap(meta,"cleanstamp",dsmap(map,"timestamp"))
     directory_create(filename_dir(argument0)+"\cache")

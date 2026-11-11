@@ -68,15 +68,16 @@ if (TAB==tab_recent) {
             texture_set_interpolation(1)
             draw_sprite_stretched(dsmap(rec,"icon"),0,dx,dy+38,32,32)
             texture_set_interpolation(0)
-            timestamp=timestamp_nicer(dsmap(rec,"timestamp"))
-            cleanstamp=timestamp_nicer(dsmap(dsmap(rec,"meta"),"cleanstamp"))
+            timestamp=timestamp_simpler(dsmap(rec,"timestamp"))
+            cleanstamp=timestamp_simpler(dsmap(dsmap(rec,"meta"),"cleanstamp"))
+            spentstamp=timespan_nicer(dsmap(dsmap(rec,"meta"),"timespent"))
             if (timestamp==cleanstamp || !ds_map_exists(dsmap(rec,"meta"),"cleanstamp")) cleanstamp="Never"
             draw_set_color(global.col_text)
-            draw_text(dx+38,dy+36,dsmap(rec,"path")+"#Version: "+dsmap(rec,"pname")+"#Modified: "+timestamp+"#Last cleaned: "+cleanstamp)
+            draw_text(dx+38,dy+36,dsmap(rec,"path")+"#Version: "+dsmap(rec,"pname")+"#Modified: "+timestamp+"#Last cleaned: "+cleanstamp+"#Time spent: "+spentstamp)
         } else {
             draw_sprite(sprGMK,0,dx,dy+38)
             draw_set_color(global.col_text)
-            draw_text(dx+38,dy+36,dsmap(rec,"path")+"#Size: "+string(dsmap(rec,"size")/1024)+"KB"+"#Modified: "+timestamp_nicer(dsmap(rec,"timestamp")))
+            draw_text(dx+38,dy+36,dsmap(rec,"path")+"#Size: "+string(dsmap(rec,"size")/1024)+"KB"+"#Modified: "+timestamp_simpler(dsmap(rec,"timestamp")))
         }
         draw_set_color($ffffff)
     } else draw_button_ext(width,32,WIDTH-width,HEIGHT-32,0,noone)

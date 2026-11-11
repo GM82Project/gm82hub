@@ -2,6 +2,11 @@
 	|rect
 	|clickrect
 	|timestamp_nicer
+	|timestamp_simpler
+	|timespan_nicer
+	|timespan_simpler
+	|string_numbular
+	|string_plural
 	|load_index
 	|delete_directory
 	|delete_file
